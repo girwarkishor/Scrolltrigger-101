@@ -63,3 +63,102 @@ window.addEventListener("load", function () {
   init();
 });
 ```
+
+## toggleClass
+
+When the points come than this will add active class after the end it will remove active class
+
+```
+gsap.registerPlugin(ScrollTrigger);
+
+function init() {
+  // toggle css class
+  gsap.set("#project02", {
+    scrollTrigger: {
+      trigger: "#project02",
+      start: "top bottom",
+      end: "bottom center",
+      toggleClass: "active",
+      markers: true,
+    },
+  });
+}
+
+window.addEventListener("load", function () {
+  init();
+});
+
+```
+
+```
+gsap.registerPlugin(ScrollTrigger);
+
+function init() {
+  // toggle css class
+  gsap.set("#project02", {
+    scrollTrigger: {
+      trigger: "#project02",
+      start: "top bottom-=150",
+      end: "bottom center-=150",
+      toggleClass: "active",
+      markers: true,
+    },
+  });
+}
+
+window.addEventListener("load", function () {
+  init();
+});
+
+```
+
+```
+gsap.registerPlugin(ScrollTrigger);
+
+function init() {
+  // toggle css class
+  gsap.set("#project02", {
+    scrollTrigger: {
+      trigger: "#project02",
+      start: "top bottom-=10%",
+      end: "bottom center-=10%",
+      toggleClass: "active",
+      markers: true,
+    },
+  });
+}
+
+window.addEventListener("load", function () {
+  init();
+});
+
+```
+
+## Simple parallax effect
+
+Simple parallax created with simple scroll trigger
+
+```
+gsap.registerPlugin(ScrollTrigger);
+
+function init() {
+
+  const parallaxTl = gsap.timeline({
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".bcg-parallax",
+      start: "top bottom",
+      scrub: true,
+    },
+  });
+
+  parallaxTl
+    .from(".content-wrapper", { duration: 0.4, autoAlpha: 0 }, 0.4)
+    .from(".bcg", { duration: 2, y: "-30%" }, 0);
+}
+
+window.addEventListener("load", function () {
+  init();
+});
+
+```
