@@ -57,6 +57,14 @@ function init() {
         start: "top bottom-=300",
         end: "top center",
         toggleActions: "play none none reverse",
+        scrub: true,
+        // onUpdate: ({ progress, direction, isActive, getVelocity }) =>
+        //   console.log(progress, direction, isActive, getVelocity()),
+        onToggle: () => console.log("toggle"),
+        onEnter: () => console.log("onEnter"),
+        onLeave: () => console.log("onLeave"),
+        onEnterBack: () => console.log("onEnterBack"),
+        onLeaveBack: () => console.log("onLeaveBack"),
         markers: true,
       },
     });

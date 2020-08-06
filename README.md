@@ -214,3 +214,196 @@ window.addEventListener("load", function () {
   init();
 });
 ```
+
+## Callback functions
+
+Here we used the onUpdate function to show the progress of events. (self) denotes the current element
+
+```
+gsap.registerPlugin(ScrollTrigger);
+
+function init() {
+  // Callback function
+  const projects = document.querySelectorAll(".project");
+
+  projects.forEach((project) => {
+    gsap.from(project, {
+      opacity: 0,
+      yPercent: 5,
+      scrollTrigger: {
+        trigger: project.querySelector("img"),
+        start: "top bottom-=300",
+        end: "top center",
+        toggleActions: "play none none reverse",
+        scrub: true,
+        onUpdate: (self) => console.log(self.progress),
+        markers: true,
+      },
+    });
+  });
+}
+
+window.addEventListener("load", function () {
+  init();
+});
+```
+
+onUpdate function return 1 or -1 when we go down and up
+
+```
+gsap.registerPlugin(ScrollTrigger);
+
+function init() {
+  // Callback function
+  const projects = document.querySelectorAll(".project");
+
+  projects.forEach((project) => {
+    gsap.from(project, {
+      opacity: 0,
+      yPercent: 5,
+      scrollTrigger: {
+        trigger: project.querySelector("img"),
+        start: "top bottom-=300",
+        end: "top center",
+        toggleActions: "play none none reverse",
+        scrub: true,
+        onUpdate: ({ progress, direction }) => console.log(progress, direction),
+        markers: true,
+      },
+    });
+  });
+}
+
+window.addEventListener("load", function () {
+  init();
+});
+```
+
+onUpdate function isActive will show where the event is running or not
+
+```
+gsap.registerPlugin(ScrollTrigger);
+
+function init() {
+  // Callback function
+  const projects = document.querySelectorAll(".project");
+
+  projects.forEach((project) => {
+    gsap.from(project, {
+      opacity: 0,
+      yPercent: 5,
+      scrollTrigger: {
+        trigger: project.querySelector("img"),
+        start: "top bottom-=300",
+        end: "top center",
+        toggleActions: "play none none reverse",
+        scrub: true,
+        onUpdate: ({ progress, direction, isActive }) => console.log(progress, direction, isActive),
+        markers: true,
+      },
+    });
+  });
+}
+
+window.addEventListener("load", function () {
+  init();
+});
+```
+
+getVelocity is used to check the velocity of scrolling
+
+```
+gsap.registerPlugin(ScrollTrigger);
+
+function init() {
+  // Callback function
+  const projects = document.querySelectorAll(".project");
+
+  projects.forEach((project) => {
+    gsap.from(project, {
+      opacity: 0,
+      yPercent: 5,
+      scrollTrigger: {
+        trigger: project.querySelector("img"),
+        start: "top bottom-=300",
+        end: "top center",
+        toggleActions: "play none none reverse",
+        scrub: true,
+        onUpdate: ({ progress, direction, isActive, getVelocity }) =>
+          console.log(progress, direction, isActive, getVelocity()),
+        markers: true,
+      },
+    });
+  });
+}
+
+window.addEventListener("load", function () {
+  init();
+});
+```
+
+onToggle is triggered when the events starts executing or end executing
+
+```
+gsap.registerPlugin(ScrollTrigger);
+
+function init() {
+  // Callback function
+  const projects = document.querySelectorAll(".project");
+
+  projects.forEach((project) => {
+    gsap.from(project, {
+      opacity: 0,
+      yPercent: 5,
+      scrollTrigger: {
+        trigger: project.querySelector("img"),
+        start: "top bottom-=300",
+        end: "top center",
+        toggleActions: "play none none reverse",
+        scrub: true,
+        onToggle: () => console.log("toggle"),
+        markers: true,
+      },
+    });
+  });
+}
+
+window.addEventListener("load", function () {
+  init();
+});
+```
+
+All functions onEnter, onLeave, onEnterBack, onLeaveBack
+
+```
+gsap.registerPlugin(ScrollTrigger);
+
+function init() {
+  // Callback function
+  const projects = document.querySelectorAll(".project");
+
+  projects.forEach((project) => {
+    gsap.from(project, {
+      opacity: 0,
+      yPercent: 5,
+      scrollTrigger: {
+        trigger: project.querySelector("img"),
+        start: "top bottom-=300",
+        end: "top center",
+        toggleActions: "play none none reverse",
+        scrub: true,
+        onToggle: () => console.log("toggle"),
+        onEnter: () => console.log("onEnter"),
+        onLeave: () => console.log("onLeave"),
+        onEnterBack: () => console.log("onEnterBack"),
+        onLeaveBack: () => console.log("onLeaveBack"),
+        markers: true,
+      },
+    });
+  });
+}
+
+window.addEventListener("load", function () {
+  init();
+});
+```
