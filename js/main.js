@@ -23,18 +23,32 @@ function init() {
   //     },
   //   });
 
-  const parallaxTl = gsap.timeline({
+  // Simple parallax effect
+  //   const parallaxTl = gsap.timeline({
+  //     ease: "none",
+  //     scrollTrigger: {
+  //       trigger: ".bcg-parallax",
+  //       start: "top bottom",
+  //       scrub: true,
+  //     },
+  //   });
+
+  //   parallaxTl
+  //     .from(".content-wrapper", { duration: 0.4, autoAlpha: 0 }, 0.4)
+  //     .from(".bcg", { duration: 2, y: "-30%" }, 0);
+
+  // Pin example
+  gsap.to(["#intro h1", "intro p"], {
+    autoAlpha: 0,
     ease: "none",
     scrollTrigger: {
-      trigger: ".bcg-parallax",
-      start: "top bottom",
+      trigger: "#intro .content",
+      pin: true,
+      start: "top top+=2%",
       scrub: true,
+      markers: true,
     },
   });
-
-  parallaxTl
-    .from(".content-wrapper", { duration: 0.4, autoAlpha: 0 }, 0.4)
-    .from(".bcg", { duration: 2, y: "-30%" }, 0);
 }
 
 window.addEventListener("load", function () {
